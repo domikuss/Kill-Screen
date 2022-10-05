@@ -103,7 +103,6 @@ void ChangeCvar_EffectDuration(ConVar Convar, const char[] oldValue, const char[
 void SetLibState(const char[] szName, bool bValue)
 {
 	static char szLibs[][] = {"vip_core", "shop"};
-	PrintToServer("%s", szName);
 	for (int i = 0; i < sizeof(szLibs); i++)
 	{
 		if (!strcmp(szName, szLibs[i]))
@@ -157,8 +156,19 @@ public void Shop_Started()
 	if(g_iPrice != -1 && Shop_StartItem(g_CategoryId, g_sFeature))
 	{
 		Shop_SetInfo("Kill Screen", "Color screen when killing another player", g_iPrice, g_iSellPrice, Item_Togglable, g_iDuration);
+		Shop_SetCallbacks(OnItemRegistered, Shop_OnItemUseToggleCallback);
 		Shop_EndItem();
 	}
+}
+
+ShopAction Shop_OnItemUseToggleCallback(int client, CategoryId category_id, const char[] category, ItemId item_id, const char[] item, bool isOn, bool elapsed)
+{
+	return isOn ? Shop_UseOff : Shop_UseOn;
+}
+
+public void OnItemRegistered(CategoryId category_id, const char[] sCategory, const char[] sItem, ItemId item_id)
+{
+	g_ItemId = item_id;
 }
 
 Action OnPlayerDeath(Event hEvent, const char[] name, bool dont_broadcast)
@@ -170,7 +180,7 @@ Action OnPlayerDeath(Event hEvent, const char[] name, bool dont_broadcast)
 	{
 		bState = true;
 	}
-	if (g_bActiveLib[LIB_SHOP] && Shop_IsClientHasItem(iAttacker, g_ItemId) && Shop_GetClientItemTimeleft(iAttacker, g_ItemId) >= 0)
+	if (g_bActiveLib[LIB_SHOP] && Shop_IsClientHasItem(iAttacker, g_ItemId) && Shop_IsClientItemToggled(iAttacker, g_ItemId) && Shop_GetClientItemTimeleft(iAttacker, g_ItemId) >= 0)
 	{
 		bState = true;
 	}
