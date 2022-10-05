@@ -1,0 +1,77 @@
+name: Compile and release
+
+on:
+  push:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set environment variables
+        run: echo SCRIPTS_PATH=$(pwd) >> $GITHUB_ENV
+      - name: Setup SourcePawn Compiler ${{ matrix.SM_VERSION }}
+        id: setup_sp
+        uses: rumblefrog/setup-sp@master
+        with:
+          version: "1.10.x"
+          version-file: ./scripting/Kill-Screen.sp
+
+      - name: Shop support
+        run: |
+          mkdir scripting/include
+          mkdir scripting/include/shop
+          wget "https://raw.githubusercontent.com/FD-Forks/Shop-Core/master/addons/sourcemod/scripting/include/shop.inc" -O scripting/include/shop.inc
+          wget "https://raw.githubusercontent.com/FD-Forks/Shop-Core/master/addons/sourcemod/scripting/include/shop/admin.inc" -O scripting/include/shop/admin.inc
+          wget "https://raw.githubusercontent.com/FD-Forks/Shop-Core/master/addons/sourcemod/scripting/include/shop/db.inc" -O scripting/include/shop/db.inc
+          wget "https://raw.githubusercontent.com/FD-Forks/Shop-Core/master/addons/sourcemod/scripting/include/shop/functions.inc" -O scripting/include/shop/functions.inc
+          wget "https://raw.githubusercontent.com/FD-Forks/Shop-Core/master/addons/sourcemod/scripting/include/shop/items.inc" -O scripting/include/shop/items.inc
+          wget "https://raw.githubusercontent.com/FD-Forks/Shop-Core/master/addons/sourcemod/scripting/include/shop/players.inc" -O scripting/include/shop/players.inc
+          wget "https://raw.githubusercontent.com/FD-Forks/Shop-Core/master/addons/sourcemod/scripting/include/shop/register.inc" -O scripting/include/shop/register.inc
+          wget "https://raw.githubusercontent.com/FD-Forks/Shop-Core/master/addons/sourcemod/scripting/include/shop/methodmaps.inc" -O scripting/include/shop/methodmaps.inc
+
+      - name: Download & install VIP Core include
+        run: wget "https://raw.githubusercontent.com/R1KO/VIP-Core/master/addons/sourcemod/scripting/include/vip_core.inc" -O scripting/include/vip_core.inc
+
+      - name: Compile plugins
+        run: |
+          mkdir plugins
+          cd scripting
+          spcomp -E -w234 -O2 -v2 -i"include" -o"../plugins/Kill-Screen.smx" Kill-Screen.sp
+          echo "===OUT FILES==="
+          cd ../plugins
+          ls
+          echo "===VERSION==="
+          echo ${{ steps.setup_sp.outputs.plugin-version }}
+        working-directory: ${{ env.SCRIPTS_PATH }}
+
+      - name: Changelog
+        id: changelog
+        uses: mindsers/changelog-reader-action@v2.0.0
+
+      - name: Install zip
+        uses: montudor/action-zip@v1
+
+      - name: Zip output
+        run: |
+          zip -qq -r Kill-Screen-${{ steps.setup_sp.outputs.plugin-version }}.zip plugins
+        working-directory: ${{ env.SCRIPTS_PATH }}
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: v${{ steps.setup_sp.outputs.plugin-version }}
+          artifacts: "Kill-Screen-${{ steps.setup_sp.outputs.plugin-version }}.zip"
+          body: ${{ steps.changelog.outputs.changes }}
+          draft: false
+          allowUpdates: true
+          prerelease: false
+          replacesArtifacts: true
