@@ -27,8 +27,8 @@
 
 
 ## Requirements ##
-- Sourcemod and Metamod
-- [VIP] Core 3.0+ OR [Shop] Core 3.0E4+
+- **Sourcemod** and **Metamod**
+- **[VIP] Core 3.0+** OR **[Shop] Core 3.0E4+**
 
 
 ## Installation ##

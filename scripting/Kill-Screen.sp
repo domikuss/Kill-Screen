@@ -176,11 +176,8 @@ Action OnPlayerDeath(Event hEvent, const char[] name, bool dont_broadcast)
 	bool bState;
 	int iAttacker = GetClientOfUserId(hEvent.GetInt("attacker"));
 
-	if (g_bActiveLib[LIB_VIP] && VIP_IsClientVIP(iAttacker) && VIP_IsClientFeatureUse(iAttacker, g_sFeature))
-	{
-		bState = true;
-	}
-	if (g_bActiveLib[LIB_SHOP] && Shop_IsClientHasItem(iAttacker, g_ItemId) && Shop_IsClientItemToggled(iAttacker, g_ItemId) && Shop_GetClientItemTimeleft(iAttacker, g_ItemId) >= 0)
+	if ((g_bActiveLib[LIB_VIP] && VIP_IsClientVIP(iAttacker) && VIP_IsClientFeatureUse(iAttacker, g_sFeature) ||
+	g_bActiveLib[LIB_SHOP] && Shop_IsClientHasItem(iAttacker, g_ItemId) && Shop_IsClientItemToggled(iAttacker, g_ItemId) && Shop_GetClientItemTimeleft(iAttacker, g_ItemId) >= 0))
 	{
 		bState = true;
 	}
