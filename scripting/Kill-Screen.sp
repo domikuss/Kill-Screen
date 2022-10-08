@@ -30,7 +30,7 @@ public Plugin myinfo =
 	name = "Kill Screen",
 	author = "Domikuss",
 	description = "Color screen when killing another player",
-	version = "1.0.0",
+	version = "1.0.1",
 	url = "https://github.com/domikuss/Kill-Screen"
 };
 
@@ -175,6 +175,10 @@ Action OnPlayerDeath(Event hEvent, const char[] name, bool dont_broadcast)
 {
 	bool bState;
 	int iAttacker = GetClientOfUserId(hEvent.GetInt("attacker"));
+	if(iAttacker <= 0 || IsFakeClient(iAttacker) || !IsPlayerAlive(iAttacker))
+	{
+		return Plugin_Continue;
+	}
 
 	if ((g_bActiveLib[LIB_VIP] && VIP_IsClientVIP(iAttacker) && VIP_IsClientFeatureUse(iAttacker, g_sFeature) ||
 	g_bActiveLib[LIB_SHOP] && Shop_IsClientHasItem(iAttacker, g_ItemId) && Shop_IsClientItemToggled(iAttacker, g_ItemId) && Shop_GetClientItemTimeleft(iAttacker, g_ItemId) >= 0))
