@@ -1,5 +1,10 @@
 ## Release Notes
 
+## [2.0.1]
+
+### Fixes:
+- Fixed error Invalid database Handle 0 (error: 4)
+
 ## [2.0.0]
 
 ### Innovations:

@@ -143,7 +143,7 @@ Handle g_hCookie;
 #define NORMAL_COOKIE_CHAR 'n'
 static const int g_iSource[] = {'\0', VIP_COOKIE_CHAR, '\0', NORMAL_COOKIE_CHAR};
 
-#define PLUGIN_VERSION "2.0.0"
+#define PLUGIN_VERSION "2.0.1"
 
 #define DEBUG_LEVEL 0
 
@@ -373,7 +373,7 @@ public void OnLibraryAdded(const char[] szName)
 		{
 			Debug(3, "OnLibraryAdded", "VIP library added.")
 
-			AddFlag(g_EPluginStatus, EPluginStatus_VIP_Loaded);
+			//AddFlag(g_EPluginStatus, EPluginStatus_VIP_Loaded);
 			if(VIP_IsVIPLoaded())
 			{
 				VIP_OnVIPLoaded();
@@ -386,7 +386,7 @@ public void OnLibraryAdded(const char[] szName)
 		{
 			Debug(3, "OnLibraryAdded", "Shop library added.")
 
-			AddFlag(g_EPluginStatus, EPluginStatus_Shop_Loaded);
+			//AddFlag(g_EPluginStatus, EPluginStatus_Shop_Loaded);
 			if(Shop_IsStarted())
 			{
 				Shop_Started();
