@@ -1,0 +1,150 @@
+"Phrases"
+{
+	"Prefix"
+	{
+		"ru"		"[{purple}Kill Screen{default}] "
+		"en"		"[{purple}Kill Screen{default}] "
+		"ua"		"[{purple}Kill Screen{default}] "
+	}
+
+	"Kill_Screen"
+	{
+		"ru"		"Экранные эффекты при убийстве"
+		"en"		"Kill screen effects"
+		"ua"		"Екранні ефекти при вбивстві"
+	}
+
+	"Shop_Description"
+	{
+		"ru"		"Эффекты при убийстве"
+		"en"		"Killing Effects"
+		"ua"		"Ефекти при вбивстві"
+	}
+
+	"Not_Selected"
+	{
+		"ru"		"Не выбрано"
+		"en"		"Not Selected"
+		"ua"		"Не вибрано"
+	}
+
+	"Selected_VIP"
+	{
+		"ru"		"Выбрано в VIP"
+		"en"		"Selected in VIP"
+		"ua"		"Вибрано в VIP"
+	}
+
+	"Selected_Shop"
+	{
+		"ru"		"Выбрано в Shop"
+		"en"		"Selected in Shop"
+		"ua"		"Вибрано в Shop"
+	}
+	
+	"Selected_Normal"
+	{
+		"ru"		"Выбрано вне VIP"
+		"en"		"Selected outside VIP"
+		"ua"		"Вибрано в не VIP"
+	}
+
+	"Kill_Screen_Title"
+	{
+		"ru"		"Выберите эффект:\n "
+		"en"		"Select effect:\n "
+		"ua"		"Виберіть ефект:\n "
+	}
+
+	"Disable"
+	{
+		"ru"		"Выключить"
+		"en"		"Disable"
+		"ua"		"Вимкнути"
+	}
+
+	"Kill_Screen_Selected"
+	{
+		"#format"	"{1:s}"
+		"ru"		"Выбран {lime}{1} {default}в качестве эффекта при убийстве."
+		"en"		"Selected {lime}{1} {default}as a kill effect."
+		"ua"		"Вибрано {lime}{1} {default}як ефект при вбивстві."
+	}
+
+	"Kill_Screen_Disabled"
+	{
+		"ru"		"Эффект при убийстве теперь {darkred}выключен{default}."
+		"en"		"The kill effect is now {darkred}disabled{default}."
+		"ua"		"Ефект при вбивстві тепер {darkred}вимкнений{default}."
+	}
+
+	"dark_blink"
+	{
+		"ru"		"Тёмное мерцание"
+		"en"		"Dark Blink"
+		"ua"		"Темне мерехтіння"
+	}
+
+	"dark_blink_description"
+	{
+		"ru"		"[0.3сек][FOV: 155]"
+		"en"		"[0.3sec][FOV: 155]"
+		"ua"		"[0.3сек][FOV: 155]"
+	}
+
+	"pretty_red"
+	{
+		"ru"		"Прекрасный красный"
+		"en"		"Pretty Red"
+		"ua"		"Прекрасний червоний"
+	}
+
+	"pretty_red_description"
+	{
+		"ru"		"[1.0сек][FOV: 20]"
+		"en"		"[1.0sec][FOV: 20]"
+		"ua"		"[1.0сек][FOV: 20]"
+	}
+
+	"healthshot"
+	{
+		"ru"		"Эффект хилшота"
+		"en"		"Healthshot effect"
+		"ua"		"Ефект хілшота"
+	}
+
+	"healthshot_description"
+	{
+		"ru"		"[1.0сек][FOV: 90]"
+		"en"		"[1.0sec][FOV: 90]"
+		"ua"		"[1.0сек][FOV: 90]"
+	}
+
+	"simple_blue"
+	{
+		"ru"		"Простой синий"
+		"en"		"Simple blue"
+		"ua"		"Простий синій"
+	}
+
+	"simple_blue_description"
+	{
+		"ru"		"[1.0сек][FOV: 50]"
+		"en"		"[1.0sec][FOV: 50]"
+		"ua"		"[1.0сек][FOV: 50]"
+	}
+
+	"typical_grey"
+	{
+		"ru"		"Типичный серый"
+		"en"		"Typical grey"
+		"ua"		"Типовий сірий"
+	}
+
+	"typical_grey_description"
+	{
+		"ru"		"Пятьдесят оттенков непотребства\n[1.0сек][FOV: 150]"
+		"en"		"Fifty Shades of Obscenity\n[1.0sec][FOV: 150]"
+		"ua"		"П'ятдесят відтінків непотребства\n[1.0сек][FOV: 150]"
+	}
+}
