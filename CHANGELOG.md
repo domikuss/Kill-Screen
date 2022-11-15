@@ -1,5 +1,15 @@
 ## Release Notes
 
+## [2.0.2]
+
+### Fixes:
+- Fixed error Client index 0 is invalid
+- Changed color of prefix phrase after last include update
+- Deleting non-existent includes files (in Workflows)
+
+### Translations:
+- Updated colors in Prefix phrase (I advise you to update this block, or replace the translation file if you have not added your phrases)
+
 ## [2.0.1]
 
 ### Fixes:
