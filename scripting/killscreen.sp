@@ -143,7 +143,7 @@ Handle g_hCookie;
 #define NORMAL_COOKIE_CHAR 'n'
 static const int g_iSource[] = {'\0', VIP_COOKIE_CHAR, '\0', NORMAL_COOKIE_CHAR};
 
-#define PLUGIN_VERSION "2.0.1"
+#define PLUGIN_VERSION "2.0.2"
 
 #define DEBUG_LEVEL 0
 
@@ -425,7 +425,7 @@ void OnPlayerDeath(Event hEvent, const char[] name, bool dont_broadcast)
 
 	Debug(2, "OnPlayerDeath", "Player %d killed '%d:%N'.", iAttacker, GetClientOfUserId(hEvent.GetInt("userid")), GetClientOfUserId(hEvent.GetInt("userid")))
 
-	if(g_PlayerData[iAttacker].KillScreenIndex != -1 && !IsFakeClient(iAttacker) && IsPlayerAlive(iAttacker))
+	if(iAttacker != 0 && IsClientInGame(iAttacker) && g_PlayerData[iAttacker].KillScreenIndex != -1 && !IsFakeClient(iAttacker) && IsPlayerAlive(iAttacker))
 	{
 		if(g_PlayerData[iAttacker].KillScreen.Color[3] > 0)
 		{

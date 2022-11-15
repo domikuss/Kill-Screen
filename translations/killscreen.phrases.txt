@@ -2,9 +2,9 @@
 {
 	"Prefix"
 	{
-		"ru"		"[{purple}Kill Screen{default}] "
-		"en"		"[{purple}Kill Screen{default}] "
-		"ua"		"[{purple}Kill Screen{default}] "
+		"ru"		"[{lightred}Kill Screen{default}] "
+		"en"		"[{lightred}Kill Screen{default}] "
+		"ua"		"[{lightred}Kill Screen{default}] "
 	}
 
 	"Kill_Screen"
