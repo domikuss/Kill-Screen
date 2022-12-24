@@ -20,7 +20,7 @@
         src="https://img.shields.io/github/repo-size/domikuss/Kill-Screen"
     />
     <img
-        src="https://img.shields.io/github/workflow/status/domikuss/Kill-Screen/Compile%20and%20release"
+        src="https://img.shields.io/github/actions/workflow/status/domikuss/Kill-Screen/main.yml"
     />
   </p>
 </div>
