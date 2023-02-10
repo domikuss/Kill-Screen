@@ -25,7 +25,10 @@ jobs:
       - name: Multicolors support
         run: |
           mkdir scripting/include
+          mkdir scripting/include/multicolors 
           wget "https://raw.githubusercontent.com/Bara/Multi-Colors/master/addons/sourcemod/scripting/include/multicolors.inc" -O scripting/include/multicolors.inc
+          wget "https://raw.githubusercontent.com/Bara/Multi-Colors/master/addons/sourcemod/scripting/include/multicolors/colors.inc" -O scripting/include/multicolors/colors.inc
+          wget "https://raw.githubusercontent.com/Bara/Multi-Colors/master/addons/sourcemod/scripting/include/multicolors/morecolors.inc" -O scripting/include/multicolors/morecolors.inc
 
       - name: Shop support
         run: |
