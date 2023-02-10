@@ -1,5 +1,15 @@
 ## Release Notes
 
+## [2.1.0]
+
+### Innovations:
+
+- Shop Gold support added.
+
+### Configuration file:
+
+- Added two new keys "shop_gold_price" and "shop_gold_sellprice" responsible for the price of items and their selling in the currency of Gold.
+
 ## [2.0.2]
 
 ### Fixes:

@@ -10,7 +10,7 @@ public void Shop_Started()
 	}
 }
 
-void AddShopItem(int iIndex, const char[] sName, const char[] sDescription, int iPrice, int iSellPrice, int iDuration, int iLuckChance, bool bHide)
+void AddShopItem(int iIndex, const char[] sName, const char[] sDescription, int iPrice, int iSellPrice, int iGoldPrice, int iGoldSellPrice, int iDuration, int iLuckChance, bool bHide)
 {
 	if(g_iCategoryId == INVALID_CATEGORY)
 	{
@@ -21,8 +21,8 @@ void AddShopItem(int iIndex, const char[] sName, const char[] sDescription, int 
 
 	if(Shop_StartItem(g_iCategoryId, sName))
 	{
-		Shop_SetInfo(sName, sDescription, iPrice, iSellPrice, Item_Togglable, iDuration);
-		if(iPrice <= 0 || bHide)
+		Shop_SetInfo(sName, sDescription, iPrice, iSellPrice, Item_Togglable, iDuration, iGoldPrice, iGoldSellPrice);
+		if((iPrice <= 0 && iGoldPrice  <= 0) || bHide)
 		{
 			Shop_SetHide(true);
 		}

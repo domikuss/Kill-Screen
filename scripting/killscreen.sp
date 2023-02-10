@@ -67,7 +67,9 @@ enum EPlayerStatus
 	{
 		char 	Description[SHOP_MAX_STRING_LENGTH];
 		int 	Price;
+		int 	GoldPrice;
 		int 	SellPrice;
+		int 	GoldSellPrice;
 		int 	Duration;
 		int 	LuckChance;
 		bool 	Hide;
@@ -143,7 +145,7 @@ Handle g_hCookie;
 #define NORMAL_COOKIE_CHAR 'n'
 static const int g_iSource[] = {'\0', VIP_COOKIE_CHAR, '\0', NORMAL_COOKIE_CHAR};
 
-#define PLUGIN_VERSION "2.0.2"
+#define PLUGIN_VERSION "2.1.0"
 
 #define DEBUG_LEVEL 0
 

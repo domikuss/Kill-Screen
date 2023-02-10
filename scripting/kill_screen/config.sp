@@ -35,6 +35,8 @@ int g_iIgnoreLevel;
 #define CONFIG_DEFAULT_SHOP_DESCRIPTION		""
 #define CONFIG_DEFAULT_SHOP_PRICE			0
 #define CONFIG_DEFAULT_SHOP_SELLPRICE		0
+#define CONFIG_DEFAULT_SHOP_GOLD_PRICE		0
+#define CONFIG_DEFAULT_SHOP_GOLD_SELLPRICE	0
 #define CONFIG_DEFAULT_SHOP_DURATION		86400
 #define CONFIG_DEFAULT_SHOP_LUCKCHANCE	-	0
 #define CONFIG_DEFAULT_SHOP_HIDE			false
@@ -110,7 +112,7 @@ void DistributeItems()
 		#if defined SHOP_INCLUDED
 			if(HasFlag(g_EPluginStatus, EPluginStatus_Shop_Loaded) && !(HasFlag(g_EPluginStatus, EPluginStatus_Shop_Config_Parsed)) && g_ParseKillScreen.AddToShop)
 			{
-				AddShopItem(i, g_ParseKillScreen.Name, g_ParseKillScreen.ShopData.Description, g_ParseKillScreen.ShopData.Price, g_ParseKillScreen.ShopData.SellPrice, g_ParseKillScreen.ShopData.Duration, g_ParseKillScreen.ShopData.LuckChance, g_ParseKillScreen.ShopData.Hide);
+				AddShopItem(i, g_ParseKillScreen.Name, g_ParseKillScreen.ShopData.Description, g_ParseKillScreen.ShopData.Price, g_ParseKillScreen.ShopData.SellPrice, g_ParseKillScreen.ShopData.GoldPrice, g_ParseKillScreen.ShopData.GoldSellPrice, g_ParseKillScreen.ShopData.Duration, g_ParseKillScreen.ShopData.LuckChance, g_ParseKillScreen.ShopData.Hide);
 			}
 		#endif
 	}
@@ -170,6 +172,8 @@ SMCResult Config_NewSection(SMCParser hParser, const char[] sName, bool bInQuote
 				g_ParseKillScreen.ShopData.Description = CONFIG_DEFAULT_SHOP_DESCRIPTION;
 				g_ParseKillScreen.ShopData.Price = CONFIG_DEFAULT_SHOP_PRICE;
 				g_ParseKillScreen.ShopData.SellPrice = CONFIG_DEFAULT_SHOP_SELLPRICE;
+				g_ParseKillScreen.ShopData.GoldPrice = CONFIG_DEFAULT_SHOP_GOLD_PRICE;
+				g_ParseKillScreen.ShopData.GoldSellPrice = CONFIG_DEFAULT_SHOP_GOLD_SELLPRICE;
 				g_ParseKillScreen.ShopData.Duration = CONFIG_DEFAULT_SHOP_DURATION;
 				g_ParseKillScreen.ShopData.LuckChance = CONFIG_DEFAULT_SHOP_LUCKCHANCE;
 				g_ParseKillScreen.ShopData.Hide = CONFIG_DEFAULT_SHOP_HIDE;
@@ -259,6 +263,14 @@ SMCResult Config_KeyValue(SMCParser hParser, const char[] sKey,  const char[] sV
 				else if(strcmp(sKey, "shop_sellprice") == 0)
 				{
 					g_ParseKillScreen.ShopData.SellPrice = StringToInt(sValue);
+				}
+				else if(strcmp(sKey, "shop_gold_price") == 0)
+				{
+					g_ParseKillScreen.ShopData.GoldPrice = StringToInt(sValue);
+				}
+				else if(strcmp(sKey, "shop_gold_sellprice") == 0)
+				{
+					g_ParseKillScreen.ShopData.GoldSellPrice = StringToInt(sValue);
 				}
 				else if(strcmp(sKey, "shop_duration") == 0)
 				{
